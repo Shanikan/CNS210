@@ -1,5 +1,5 @@
 #incomplete
-UserInput = input("Please enter something: ")
+UserInput = 
 
 def fib(n):
     if n == 0:
