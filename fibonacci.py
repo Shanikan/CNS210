@@ -24,7 +24,7 @@ def Main():
     def fib(n):
         x, y = 0, 1
         count = 0
-        
+        # ^ For future loop ^
             
         if n <= 0:
             print("Please enter a positive integer")
@@ -46,8 +46,8 @@ def Main():
                 f.write(str(x))
             except:
                 1 == 1
+            # Will go through with or without file, updates values to keep in loop
             nth = x + y
-            # update values
             x = y
             y = nth
             count += 1
