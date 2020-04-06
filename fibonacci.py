@@ -1,4 +1,3 @@
-#incomplete
 # Do *not* test this thing with -n 5
 import os.path
 import argparse
