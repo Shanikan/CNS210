@@ -1,21 +1,22 @@
 # Do *not* test this thing with -n 5
+# Run in Python3
 import os.path
 import argparse
 
 def Main():
     parser = argparse.ArgumentParser(
-        description="This program should find a requested number of the fibonnacci sequence. It should then print the results to a file. *Should*"
+        description="This program should find a requested number of the fibonnacci sequence. It should then print the results to a file. Functions in Python 3. Somewhat functional in Python 2"
         )
     parser.add_argument('-n', metavar='number', type=int, nargs='+', help="Integer in fibonacci sequence.")
     parser.add_argument('-f', metavar='filename', type=str, nargs='+', help="File for the program results to be written to.")
-
+    y = "y"
     args = parser.parse_args()
     file = args.f[0]
     try:
         f = open(file, "x")
     except:
         erresp = input("This File Already Exists, would you like to overwrite? y/[n]: ")
-        if erresp == "y":
+        if erresp == y:
             f = open(file, "w") 
         else:
             print("No File to Write to, aborting program")
