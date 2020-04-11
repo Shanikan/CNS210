@@ -13,16 +13,30 @@ def Main():
     args = parser.parse_args()
     file = args.f[0]
     try:
-        f = open(file, "x")
-    except:
+        f = open(file, "r")
         try:
             erresp = input("This File Already Exists, would you like to overwrite? y/[n]: ")
             if erresp == y:
                 f = open(file, "w") 
             else:
                 print("No File to Write to, aborting program")
+                
         except:
             print("No File to Write to, aborting program")
+    except:
+        print("File does not exist, creating new file...")
+        f = open(file, "w")
+            
+        #f = open(file, "x")
+    #try:
+     #   erresp = input("This File Already Exists, would you like to overwrite? y/[n]: ")
+      #  if erresp == y:
+       #    f = open(file, "w") 
+        #else:
+         #   print("No File to Write to, aborting program")
+                
+   # except:
+     #   print("No File to Write to, aborting program")
 # 1==1 is to allow exceptions to stop any write attempts if they shouldn't happen,
 # while printing nothing to console or file
     def fib(n):
