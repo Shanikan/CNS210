@@ -15,10 +15,11 @@ def Main():
     try:
         f = open(file, "x")
     except:
-        erresp = input("This File Already Exists, would you like to overwrite? y/[n]: ")
-        if erresp == y:
-            f = open(file, "w") 
-        else:
+        try:
+            erresp = input("This File Already Exists, would you like to overwrite? y/[n]: ")
+            if erresp == y:
+                f = open(file, "w") 
+        except:
             print("No File to Write to, aborting program")
 # 1==1 is to allow exceptions to stop any write attempts if they shouldn't happen,
 # while printing nothing to console or file
