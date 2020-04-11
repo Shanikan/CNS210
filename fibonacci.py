@@ -1,11 +1,10 @@
 # Do *not* test this thing with -n 5
-# Run in Python3
 import os.path
 import argparse
 
 def Main():
     parser = argparse.ArgumentParser(
-        description="This program should find a requested number of the fibonnacci sequence. It should then print the results to a file. Functions in Python 3. Somewhat functional in Python 2"
+        description="This program should find a requested number of the fibonnacci sequence. It should then print the results to a file. Functions in both Python 2 and 3."
         )
     parser.add_argument('-n', metavar='number', type=int, nargs='+', help="Integer in fibonacci sequence.")
     parser.add_argument('-f', metavar='filename', type=str, nargs='+', help="File for the program results to be written to.")
