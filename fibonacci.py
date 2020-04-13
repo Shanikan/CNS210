@@ -1,16 +1,19 @@
 # Do *not* test this thing with -n 5
 import os.path
 import argparse
+import sys
 
 def Main():
-    parser = argparse.ArgumentParser(
-        description="This program should find a requested number of the fibonnacci sequence. It should then print the results to a file. Functions in both Python 2 and 3."
-        )
+    parser = argparse.ArgumentParser(description="This program should find a requested number of the fibonnacci sequence. It should then print the results to a file. Functions in both Python 2 and 3.")
     parser.add_argument('-n', metavar='number', type=int, nargs='+', help="Integer in fibonacci sequence.")
     parser.add_argument('-f', metavar='filename', type=str, nargs='+', help="File for the program results to be written to.")
     y = "y"
     args = parser.parse_args()
-    file = args.f[0]
+    try:
+        file = args.f[0]
+    except:
+        print("You can bring up the requested parameters with -h.")
+        sys.exit()
     try:
         f = open(file, "r")
         try:
@@ -57,7 +60,7 @@ def Main():
                 f.write("Fibonacci sequence until requested number:")
             except:
                 1 == 1
-        while count < n:
+        while count <= n:
             try:
                 f.write(os.linesep)
                 f.write(str(x))
