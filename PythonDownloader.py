@@ -1,17 +1,19 @@
 #!/usr/bin/python
 
+import sys
 import argparse
 import requests
-import bs4
 from bs4 import BeautifulSoup
 import urllib
 
 parser = argparse.ArgumentParser(description="This program parses the Python Downloads Site and from it, downloads a version released on the requested day.")
 parser.add_argument('-d', metavar='date', type=str, nargs='+', help="Date of Python Release (Month Day, Year) enclosed in quotes.")
 args = parser.parse_args()
-usrdate = str(args.d[0])
-#TODO: Narrow Down to Look for Just DATE
-# Try Searching for Explicit Date/Name
+try:
+  usrdate = str(args.d[0])
+except:
+  print("Use the arugment -h to show the help prompts")
+  sys.exit()
 url = "https://www.python.org/downloads/"
 versions = []
 page = requests.get(url)
