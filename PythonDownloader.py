@@ -1,13 +1,10 @@
 #!/usr/bin/python
 
 import argparse
-import os.path
-import sys
 import requests
 import bs4
 from bs4 import BeautifulSoup
 import urllib
-import urllib2
 
 parser = argparse.ArgumentParser(description="This program parses the Python Downloads Site and from it, downloads a version released on the requested day.")
 parser.add_argument('-d', metavar='date', type=str, nargs='+', help="Date of Python Release (Month Day, Year) enclosed in quotes.")
