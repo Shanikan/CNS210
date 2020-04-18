@@ -20,14 +20,14 @@ page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 for link in soup.select('.list-row-container li'):
       String = str(link.prettify())
-      #print(link)
+      #
       if usrdate in String:
         SplinterString = String.split()
         versions.append(SplinterString[6])
 print(versions)
+# Prompt User for Version Number
 userspec = input("Select Version from the above list within quotations: ")
-version = str(userspec)
-print(version)        
+version = str(userspec)   
 
 #hardcoding it
 gotcha = "https://www.python.org/ftp/python/" + version + "/Python-" + version + ".tar.xz"
