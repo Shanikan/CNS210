@@ -9,7 +9,7 @@ import urllib
 # Argparse Setup
 
 parser = argparse.ArgumentParser(description="This program parses the Python Downloads Site and from it, downloads a version released on the requested day.")
-parser.add_argument('-d', metavar='date', type=str, nargs='+', help="Date of Python Release (Month Day, Year) enclosed in quotes. Ex. 'April 6th, 2013'")
+parser.add_argument('-d', metavar='date', type=str, nargs='+', help="Date of Python Release (Month Day, Year) enclosed in quotes. Ex. 'April 6, 2013'")
 args = parser.parse_args()
 try:
   usrdate = str(args.d[0])
