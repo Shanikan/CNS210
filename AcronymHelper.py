@@ -21,7 +21,6 @@ if protocol == "TCP":
 
 
 url = "https://en.wikipedia.org/wiki/" + protocol
-versions = []
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 for link in soup.find('p').getText():
