@@ -19,13 +19,6 @@ except:
   sys.exit()
 
 # Hardcoding certain acronyms that have multiple non-computer related uses to the correct ones
-#def acronymcorrection(argument):
-   #   switch = {
-     #   "TCP": "Transmission_Control_Protocol",
-      #  "RIP": "Routing_Information_Protocol",
-       # "SIP": "Session_Initiation_Protocol",
-        #"RSVP": "Resource_Reservation_Protocol",
-      #}
 def acronymcorrector(protocol):
   if protocol == "TCP":
     return "Transmission_Control_Protocol"
