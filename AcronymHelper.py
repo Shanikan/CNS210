@@ -61,3 +61,4 @@ for link in soup.find('p').getText():
     String = link
     #The following code is bullshit.
     print String,
+print("For more, go to "+ url)
