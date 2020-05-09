@@ -54,6 +54,7 @@ def wikipuller(page):
   protpage = wikipedia.page(title=page, auto_suggest=True)
   protsum = protpage.summary
   url = protpage.url
+  print("")
   print(protsum)
   print("")
   print("For more, go to "+ url)
@@ -109,7 +110,10 @@ if PickOne == True:
   RNGesus = RNG[0]
   Flashcard = "Flashcard"
   Description = "Description"
-  flashmode = input("Random Protocol Selected, select flashcard mode or Random Description ['Flashcard', 'Description']: ")
+  try:
+    flashmode = input("Random Protocol Selected, select flashcard mode or Random Description ['Flashcard', 'Description']: ")
+  except:
+    print("Invalid Input Given, please input 'Flashcard' or 'Description'")
   propprot = acronymcorrector(RNGesus)
   if flashmode == "Flashcard":
         print("Press Enter to proceed with the description of the following protocol:")
@@ -120,6 +124,7 @@ if PickOne == True:
           1==1
         wikipuller(propprot)
   elif flashmode == "Description":
+        print("")
         wikipuller(propprot)
+        print("")
         print("The described protocol is: " + RNGesus)
-
