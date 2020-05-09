@@ -3,14 +3,16 @@
 import sys
 import argparse
 import requests
-from bs4 import BeautifulSoup
+#The Following became a Bruh Moment after I spent an ungodly amount of time with beautiful soup.
+#Literally https://xkcd.com/353/
+import wikipedia
 import urllib
 import random
 
 # Argparse Setup
 
 parser = argparse.ArgumentParser(description="This program exists as a sort of programming flashcard for acronyms and other terminology, by pulling the summary from Wikipedia.")
-parser.add_argument('-p', metavar='protocol', type=str, nargs='+', help="The requested protocol or acronym to be looked up. Inputting 'random' in place of a protocol will result in a randomized protocol from a list. Acronyms should be listed in full capitalization, eg 'TCP'. Protocols should be formated with underscores '_' replacing spaces.")
+parser.add_argument('-p', metavar='protocol', type=str, nargs='+', help="The requested protocol or acronym to be looked up. Inputting 'random' in place of a protocol will result in a randomized protocol from a list. Acronyms should be listed in full capitalization, eg 'TCP'.")
 args = parser.parse_args()
 try:
   usrinput = str(args.p[0])
@@ -21,44 +23,105 @@ except:
 # Hardcoding certain acronyms that have multiple non-computer related uses to the correct ones
 def acronymcorrector(protocol):
   if protocol == "TCP":
-    return "Transmission_Control_Protocol"
+    return "Transmission Control Protocol"
   elif protocol == "RIP":
-    return "Routing_Information_Protocol"
+    return "Routing Information Protocol"
   elif protocol == "RTP":
-    return "Real-time_Transport_Protocol"
+    return "Real-time Transport Protocol"
   elif protocol == "SIP":
-    return "Session_Initiation_Protocol"    
+    return "Session Initiation Protocol"    
   elif protocol == "RSVP":
-    return "Resource_Reservation_Protocol"
+    return "Resource Reservation Protocol"
   elif protocol == "POP":
-    return "Post_Office_Protocol"
+    return "Post Office Protocol"
   elif protocol == "NTP":
-    return "Network_Time_Protocol"
+    return "Network Time Protocol"
   elif protocol == "MGCP":
-    return "Media_Gateway_Control_Protocol"
+    return "Media Gateway Control Protocol"
   elif protocol == "UDP":
-    protocol = "User_Datagram_Protocol"
+    return "User Datagram Protocol"
   elif protocol == "NDP":
-    return "Neighbor_Discovery_Protocol"
+    return "Neighbor Discovery Protocol"
   elif protocol == "ARP":
-    return "Address_Resolution_Protocol"
+    return "Address Resolution Protocol"
   elif protocol == "MAC":
-    return "Medium_access_control"
+    return "Medium access control"
   #elif protocol == "":
-        #protocol = ""
+    #protocol = ""
   else:
-        return protocol
+    return protocol
+
+
+def wikipuller(page):
+  protpage = wikipedia.page(title=page, auto_suggest=True)
+  protsum = protpage.summary
+  url = protpage.url
+  print(protsum)
+  print("")
+  print("For more, go to "+ url)
+
 
 if usrinput == "random":
-        PickOne = True
+  PickOne = True
 else:
-  urladdendum = acronymcorrector(usrinput)
+  PickOne = False
+  propprot = acronymcorrector(usrinput)
+  wikipuller(propprot)
 
-url = "https://en.wikipedia.org/wiki/" + urladdendum
-page = requests.get(url)
-soup = BeautifulSoup(page.content, 'html.parser')
-for link in soup.find('p').getText():
-    String = link
-    #The following code is bullshit.
-    print String,
-print("For more, go to "+ url)
+
+randomprot = [
+  "TCP",
+  "FTP",
+  "UDP",
+  "DNS",
+  "MAC",
+  "UDP",
+  "ARP",
+  "NDP",
+  "MGCP",
+  "NTP",
+  "POP",
+  "RSVP",
+  "SIP",
+  "RTP",
+  "RIP",
+  "DCCP",
+  "SCTP",
+  "SSH",
+  "SNMP",
+  "RTSP",
+  "NNTP",
+  "MQTT",
+  "LDAP",
+  "IMAP",
+  "HTTP",
+  "HTTPS",
+  "DHCP",
+  "BGP",
+  "XMPP",
+  "OSPF",
+  "L2TP",
+  "PPP",
+
+  ]
+
+
+if PickOne == True:
+  RNG = random.sample(randomprot, 1)
+  RNGesus = RNG[0]
+  Flashcard = "Flashcard"
+  Description = "Description"
+  flashmode = input("Random Protocol Selected, select flashcard mode or Random Description ['Flashcard', 'Description']: ")
+  propprot = acronymcorrector(RNGesus)
+  if flashmode == "Flashcard":
+        print("Press Enter to proceed with the description of the following protocol:")
+        print(RNGesus)
+        try:
+          input("")
+        except:
+          1==1
+        wikipuller(propprot)
+  elif flashmode == "Description":
+        wikipuller(propprot)
+        print("The described protocol is: " + RNGesus)
+
