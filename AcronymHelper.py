@@ -1,12 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import sys
 import argparse
-import requests
 #The Following became a Bruh Moment after I spent an ungodly amount of time with beautiful soup.
 #Literally https://xkcd.com/353/
 import wikipedia
-import urllib
 import random
 
 # Argparse Setup
@@ -47,7 +45,7 @@ def acronymcorrector(protocol):
   elif protocol == "MAC":
     return "Medium access control"
   #elif protocol == "":
-    #protocol = ""
+    #return = ""
   else:
     return protocol
 
